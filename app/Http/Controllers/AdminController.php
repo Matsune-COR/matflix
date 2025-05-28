@@ -19,7 +19,6 @@ class SouvenirController extends Controller
         // ->where('user_id', Auth::id())
         // ->get();
         //
-        return view('souvenirs.index', compact('souvenirs'));
+        return view('admin.movies', compact('souvenirs'));
     }
 }
-//
