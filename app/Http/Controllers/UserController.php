@@ -16,8 +16,8 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index()
     {
-        return view('user.index', compact('request'));
+        return view('user.index');
     }
 }

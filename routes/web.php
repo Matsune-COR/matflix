@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -23,5 +24,9 @@ Route::middleware(['auth', 'can:admin'])->group(function () {
     Route::get('/admin/index', [AdminController::class, 'index'])->name('admin.index');
 
 });
+
+
+// MatFlix（一般ユーザー）
+Route::get('/user/index', [UserController::class, 'index'])->name('user.index');
 
 require __DIR__.'/auth.php';
