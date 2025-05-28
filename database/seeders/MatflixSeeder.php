@@ -76,6 +76,6 @@ class MatflixSeeder extends Seeder
         ]]);
 
         //ファクトリー
-        Matflix::factory()->count(10)->create();
+
     }
 }
