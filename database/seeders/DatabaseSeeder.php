@@ -22,7 +22,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             UserSeeder::class,
-            MatflixSeeder::class
+            MatflixSeeder::class,
+            ReviewSeeder::class,
         ]); // 追記
     }
 }
