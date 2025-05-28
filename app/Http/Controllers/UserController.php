@@ -5,20 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-use App\Models\Souvenir; //モデルのインポート
+use App\Models\Category;
+use App\Models\Movie;
+use App\Models\Review;
+use App\Models\Series;
+use App\Models\User; //モデルのインポート
 
-class SouvenirController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        // $souvenirs = Souvenir::select('id', 'name', 'prefecture', 'price', 'stock', 'description', 'user_id', 'is_visible')
-        // ->where('is_visible', true)
-        // ->where('user_id', Auth::id())
-        // ->get();
-        //
-        return view('user.register', compact('souvenirs'));
+        return view('user.index', compact('request'));
     }
 }
