@@ -15,6 +15,16 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    <!-- ここに追加 -->
+                    @if(Auth::user()->role == 5)
+                        <x-nav-link :href="route('admin.index')" :active="request()->routeIs('admin.*')">
+                            MatFlix（管理者）
+                        </x-nav-link>
+                    @else
+                        <x-nav-link :href="route('purchases.index')" :active="request()->routeIs('purchases.*')">
+                            お土産サイト（一般ユーザー）
+                        </x-nav-link>
+                    @endif
                 </div>
             </div>
 
