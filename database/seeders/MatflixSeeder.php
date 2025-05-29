@@ -61,6 +61,12 @@ class MatflixSeeder extends Seeder
         ],[
             'name' => 'アクション',
             'rating' => 70,
+        ],[
+            'name' => 'ホラー',
+            'rating' => 65,
+        ],[
+            'name' => 'SF',
+            'rating' => 80,
         ]]);
 
         //シリーズテーブル
