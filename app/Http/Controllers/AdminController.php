@@ -74,6 +74,15 @@ class AdminController extends Controller
         return view('admin.show', compact('movie'));
     }
 
+    public function reviews($id)
+    {
+        $reviews = Review::with(['movie', 'user'])
+            ->select('id', 'movie_id', 'user_id', 'review', 'rating')
+            ->where('movie_id',$id)
+            ->get();
+        return view('admin.reviews', compact('reviews'));
+    }
+
     public function edit(string $id)
     {
         // URLに含まれる、データのid番号を利用する

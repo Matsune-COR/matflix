@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-
+<h1>映画一覧</h1>
 @if ($movies->count() > 0)
     <table>
         <tr>
@@ -13,16 +13,16 @@
             <th>映画詳細</th>
         </tr>
         {{-- @foreach ディレクティブで、1件ずつ処理 --}}
-        @foreach ($movies as $movies)
+        @foreach ($movies as $movie)
             <tr>
-                <td>{{ $movies->name }}</td>
-                <td>{{ $movies->information }}</td>
-                <td>{{ $movies->category->name ?? 'カテゴリなし' }}</td>
-                <td>{{ $movies->series->name ?? 'カテゴリなし' }}</td>
-                <td>{{ $movies->view }}</td>
-                <td>{{ $movies->is_distribution }}</td>
-                <td>{{ $movies->released_at }}</td>
-                <td><a href="/admin/show/{{ $movies->id }}">詳細</a></td>
+                <td>{{ $movie->name }}</td>
+                <td>{{ $movie->information }}</td>
+                <td>{{ $movie->category->name ?? 'カテゴリなし' }}</td>
+                <td>{{ $movie->series->name ?? 'カテゴリなし' }}</td>
+                <td>{{ $movie->view }}</td>
+                <td>{{ $movie->is_distribution }}</td>
+                <td>{{ $movie->released_at }}</td>
+                <td><a href="/admin/show/{{ $movie->id }}">詳細</a></td>
             </tr>
         @endforeach
     </table>

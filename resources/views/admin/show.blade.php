@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-
+<h1>映画詳細</h1>
 <table>
     <tr>
         <th>ID</th>
@@ -23,3 +23,6 @@
     </tr>
 </table>
 <p><a href="/admin/edit/{{ $movie->id }}">編集画面</a></p>
+<p><a href="/admin/reviews/{{ $movie->id }}">口コミを見る</a></p>
+
+
