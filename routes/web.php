@@ -17,16 +17,20 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    // MatFlix（一般ユーザー）
+    Route::get('/user/index', [UserController::class, 'index'])->name('user.index');
+    Route::get('/user/view', [UserController::class, 'view'])->name('user.view');
+    Route::get('/user/show/{movie_id}', [UserController::class, 'show'])->name('user.show');
+    Route::get('/user/evaluation/{movie_id}', [UserController::class, 'evaluation'])->name('user.evaluation');
 });
 
-//管理者おみやげ
+//MatFlix（管理者）
 Route::middleware(['auth', 'can:admin'])->group(function () {
     Route::get('/admin/index', [AdminController::class, 'index'])->name('admin.index');
-
+    Route::get('/admin/create', [AdminController::class, 'create'])->name('admin.create');
+    Route::get('/admin/edit/{move_id}', [AdminController::class, 'edit'])->name('admin.edit');
 });
 
 
-// MatFlix（一般ユーザー）
-Route::get('/user/index', [UserController::class, 'index'])->name('user.index');
-
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
