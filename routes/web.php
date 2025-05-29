@@ -23,6 +23,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/user/view', [UserController::class, 'view'])->name('user.view');
     Route::get('/user/show/{movie_id}', [UserController::class, 'show'])->name('user.show');
     Route::get('/user/evaluation/{movie_id}', [UserController::class, 'evaluation'])->name('user.evaluation');
+    Route::post('/user/evaluation/{movie_id}', [UserController::class, 'evaluationPost'])->name('user.evaluation.post');
 });
 
 //MatFlix（管理者）
