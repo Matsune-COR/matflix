@@ -18,6 +18,36 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('user.index');
+        $movies = Movie::with(['category', 'series'])
+            ->select('id', 'name', 'information', 'category_id', 'series_id', 'view', 'released_at', "is_distribution")
+            ->where('is_distribution', true)
+            ->get();
+        return view('user.index', compact('movies'));
+    }
+
+    public function view()
+    {
+        return view('user.view');
+    }
+
+    public function show($id)
+    {
+        $movies = Movie::with(['category', 'series'])
+            ->select('id', 'name', 'information', 'category_id', 'series_id', 'view', 'released_at')
+            ->find($id);
+        return view('user.show', compact('movies'));
+    }
+
+    public function evaluation($id)
+    {
+        $movies = Movie::with(['category', 'series'])
+            ->select('id', 'name', 'information', 'category_id', 'series_id', 'view', 'released_at')
+            ->find($id);
+        return view('user.evaluation', compact('movies'));
+    }
+
+    public function evaluationPost()
+    {
+        return view('user.evaluation');
     }
 }
