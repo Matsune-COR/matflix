@@ -26,11 +26,14 @@ Route::middleware('auth')->group(function () {
     Route::post('/user/evaluation/{movie_id}', [UserController::class, 'evaluationPost'])->name('user.evaluation.post');
 });
 
-//MatFlix（管理者）
+//管理者matflix
 Route::middleware(['auth', 'can:admin'])->group(function () {
     Route::get('/admin/index', [AdminController::class, 'index'])->name('admin.index');
     Route::get('/admin/create', [AdminController::class, 'create'])->name('admin.create');
-    Route::get('/admin/edit/{move_id}', [AdminController::class, 'edit'])->name('admin.edit');
+    Route::post('/admin/store', [AdminController::class, 'store'])->name('admin.store');
+    Route::get('/admin/show/{id}', [AdminController::class, 'show']);
+    Route::get('/admin/edit/{id}', [AdminController::class, 'edit']);
+    Route::post('/admin/update/{id}', [AdminController::class, 'update']);
 });
 
 
