@@ -21,8 +21,8 @@
                             MatFlix（管理者）
                         </x-nav-link>
                     @else
-                        <x-nav-link :href="route('purchases.index')" :active="request()->routeIs('purchases.*')">
-                            お土産サイト（一般ユーザー）
+                        <x-nav-link :href="route('user.index')" :active="request()->routeIs('user.*')">
+                            MatFlix（一般ユーザー）
                         </x-nav-link>
                     @endif
                 </div>
