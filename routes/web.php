@@ -24,6 +24,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/user/show/{movie_id}', [UserController::class, 'show'])->name('user.show');
     Route::get('/user/evaluation/{movie_id}', [UserController::class, 'evaluation'])->name('user.evaluation');
     Route::post('/user/evaluation/{movie_id}', [UserController::class, 'evaluationPost'])->name('user.evaluation.post');
+    //口コミ一覧
+    Route::get('/user/reviews/{id}', [UserController::class, 'reviews']);
 });
 
 //管理者matflix
@@ -32,6 +34,7 @@ Route::middleware(['auth', 'can:admin'])->group(function () {
     Route::get('/admin/create', [AdminController::class, 'create'])->name('admin.create');
     Route::post('/admin/store', [AdminController::class, 'store'])->name('admin.store');
     Route::get('/admin/show/{id}', [AdminController::class, 'show']);
+    Route::get('/admin/reviews/{id}', [AdminController::class, 'reviews']);
     Route::get('/admin/edit/{id}', [AdminController::class, 'edit']);
     Route::post('/admin/update/{id}', [AdminController::class, 'update']);
 });

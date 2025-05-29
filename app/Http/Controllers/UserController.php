@@ -32,22 +32,45 @@ class UserController extends Controller
 
     public function show($id)
     {
-        $movies = Movie::with(['category', 'series'])
+        $movie = Movie::with(['category', 'series'])
             ->select('id', 'name', 'information', 'category_id', 'series_id', 'view', 'released_at')
             ->find($id);
-        return view('user.show', compact('movies'));
+        return view('user.show', compact('movie'));
     }
 
     public function evaluation($id)
     {
-        $movies = Movie::with(['category', 'series'])
+        $movie = Movie::with(['category', 'series'])
             ->select('id', 'name', 'information', 'category_id', 'series_id', 'view', 'released_at')
             ->find($id);
-        return view('user.evaluation', compact('movies'));
+        return view('user.evaluation', compact('movie'));
     }
 
-    public function evaluationPost()
+    public function evaluationPost(Request $request, string $id)
     {
-        return view('user.evaluation');
+        // バリデーション
+        $request->validate([
+            // nameを 必須、2文字以上、10文字以内 とする
+            'review' => ['required']
+        ]);
+
+        //モデルで編集対象のデータを取得し、nameの値を変更して上書き
+        $new_review = new Review();
+        $new_review->movie_id = $id;
+        $new_review->user_id = Auth::user()->id;
+        $new_review->review = $request->review;
+        $new_review->rating = $request->rating;
+        $new_review->save(); // DBに保存
+
+        return redirect('/user/index');
+    }
+
+    public function reviews($id)
+    {
+        $reviews = Review::with(['movie', 'user'])
+            ->select('id', 'movie_id', 'user_id', 'review', 'rating')
+            ->where('movie_id',$id)
+            ->get();
+        return view('user.reviews', compact('reviews'));
     }
 }
