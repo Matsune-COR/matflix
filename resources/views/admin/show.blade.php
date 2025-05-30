@@ -22,6 +22,8 @@
         <td>{{ $movie->released_at }}</td>
     </tr>
 </table>
+<p><img src="{{ asset($movie->image_path) }}" alt="Image"></p>
+<p><a href="/admin/index">一覧に戻る</a></p>
 <p><a href="/admin/edit/{{ $movie->id }}">編集画面</a></p>
 <p><a href="/admin/reviews/{{ $movie->id }}">口コミを見る</a></p>
 

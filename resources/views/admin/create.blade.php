@@ -59,6 +59,9 @@
     <div>
         公開日：<input type="date" name="released_at" value="{{ old('released_at') }}">
     </div>
+    <div>
+        画像パス：<input type="text" name="image_path" value="{{ old('image_path') }}">
+    </div>
 
     <input type="hidden" name="send">
     <button class="btn-blue">送信</button>

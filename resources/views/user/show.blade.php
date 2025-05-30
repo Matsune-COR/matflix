@@ -4,6 +4,7 @@
 <p>シリーズ：{{ $movie->series?->name }}</p>
 <p>視聴回数：{{ $movie->view }}</p>
 <p>公開日時：{{ $movie->released_at }}</p>
+<p><img src="{{ asset($movie->image_path) }}" alt="Image"></p>
 
 <a href="{{ route('user.index') }}">映画一覧へ戻る</a>
 <a href="{{ route('user.evaluation', ['movie_id' => $movie->id]) }}">評価を書き込む</a>
