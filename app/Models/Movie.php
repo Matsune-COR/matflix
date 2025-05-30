@@ -15,4 +15,7 @@ class Movie extends Model
     {
         return $this->belongsTo(Series::class, 'series_id'); // 外部キー名を指定
     }
+
+    protected $fillable = ['name', 'information', 'category_id', 'series_id', 'view', 'is_distribution', 'released_at', 'image_path'];
+
 }
